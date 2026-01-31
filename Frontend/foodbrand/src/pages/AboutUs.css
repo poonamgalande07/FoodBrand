@@ -1,0 +1,43 @@
+.about-us-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: "Arial", sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.about-us-container h1 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #d35400; /* warm orange for Desi vibe */
+}
+
+.about-us-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: linear-gradient(to bottom, #ffffff, #f9f9f9);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.about-us-section h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #e67e22; /* secondary warm color */
+}
+
+.about-us-section p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.about-us-section ul {
+  list-style: disc inside;
+  padding-left: 0;
+}
+
+.about-us-section li {
+  margin-bottom: 8px;
+}

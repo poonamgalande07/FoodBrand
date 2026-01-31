@@ -1,0 +1,71 @@
+/* ProductDetails.css */
+
+/* Overall page styling */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff8f0; /* soft, warm food-friendly background */
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main container */
+.product-details-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px 30px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* Product title */
+.product-details-container h1 {
+  font-size: 32px;
+  color: #ff6b35; /* appetizing accent color */
+  margin-bottom: 20px;
+}
+
+/* Product image */
+.product-details-container img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.product-details-container img:hover {
+  transform: scale(1.05);
+}
+
+/* Product description */
+.product-details-container p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+/* Category, Taste, Season info */
+.product-details-container .info {
+  font-weight: 600;
+  color: #555;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .product-details-container {
+    margin: 30px 15px;
+    padding: 15px 20px;
+  }
+
+  .product-details-container h1 {
+    font-size: 26px;
+  }
+
+  .product-details-container p {
+    font-size: 16px;
+  }
+}
