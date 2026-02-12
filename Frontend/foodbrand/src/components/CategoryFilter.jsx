@@ -1,13 +1,11 @@
+import "./CategoryFilter.css";
+
 export default function CategoryFilter({ categories, selected, onSelect }) {
   return (
-    <div style={{ marginBottom: "20px" }}>
+    <div className="category-bar">
       <button
+        className={`category-btn ${selected === null ? "active" : ""}`}
         onClick={() => onSelect(null)}
-        style={{
-          marginRight: "10px",
-          background: selected === null ? "#333" : "#ccc",
-          color: "white"
-        }}
       >
         All
       </button>
@@ -15,12 +13,10 @@ export default function CategoryFilter({ categories, selected, onSelect }) {
       {categories.map((cat) => (
         <button
           key={cat.id}
+          className={`category-btn ${
+            selected === cat.id ? "active" : ""
+          }`}
           onClick={() => onSelect(cat.id)}
-          style={{
-            marginRight: "10px",
-            background: selected === cat.id ? "#333" : "#ccc",
-            color: "white"
-          }}
         >
           {cat.name}
         </button>

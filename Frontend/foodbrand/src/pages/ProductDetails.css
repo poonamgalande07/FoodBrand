@@ -1,9 +1,6 @@
-/* ProductDetails.css */
-
-/* Overall page styling */
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #fff8f0; /* soft, warm food-friendly background */
+  background-color: #fff8f0; 
   color: #333;
   margin: 0;
   padding: 0;
@@ -23,7 +20,7 @@ body {
 /* Product title */
 .product-details-container h1 {
   font-size: 32px;
-  color: #ff6b35; /* appetizing accent color */
+  color: #ff6b35; 
   margin-bottom: 20px;
 }
 

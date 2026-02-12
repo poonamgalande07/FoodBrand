@@ -5,6 +5,9 @@ from .views import (
     ProductListAPI,FeaturedProductAPI,ContactCreateAPI
 )
 
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from .views import RegisterView, JobListView, ApplyJobView
+
 urlpatterns = [
     path('catagories/',CategoryListAPI.as_view(), name='category-list'),
     path('taste/',TasteListAPI.as_view(), name='taste-list'),
@@ -16,6 +19,15 @@ urlpatterns = [
 
     # contact
     path('contact/',ContactCreateAPI.as_view(), name='contact-create'),
+
+# =====================================================================
+
+    path('register/', RegisterView.as_view()),
+    path('login/', TokenObtainPairView.as_view()),
+    path('token/refresh/', TokenRefreshView.as_view()),
+
+    path('jobs/', JobListView.as_view()),
+    path('apply/', ApplyJobView.as_view()),
 
 
 ]

@@ -1,0 +1,39 @@
+.category-bar {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 12px 5px;
+  margin-bottom: 30px;
+  scrollbar-width: none;
+}
+
+.category-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.category-btn {
+  padding: 8px 18px;
+  font-size: 14px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background-color: #f2f2f2;
+  color: #333;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.category-btn:hover {
+  background-color: #222;
+  color: #fff;
+  border-color: #222;
+}
+
+/* Active */
+.category-btn.active {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+  font-weight: 500;
+}

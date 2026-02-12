@@ -9,7 +9,12 @@ import Navbar from './components/Navbar';
 import { useEffect, useState } from 'react';
 import Footer from './components/Footer';
 import axios from 'axios';
-import Careers from './components/Careers';
+import ApplyJob from './pages/ApplyJob';
+import Careers from './pages/Careers';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Privacy from './pages/Privacy';
+
 
 function App() {
   // const [searchTerm, setSearchTerm] = useState("");
@@ -41,7 +46,7 @@ function App() {
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         setSelectedCategory={setSelectedCategory}
-        products={products} // 🔹 Pass all products to Navbar
+        products={products} //  Pass all products to Navbar
       />
 
       <Routes>
@@ -69,6 +74,15 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path='/career' element={<Careers/>} />
         <Route path="/product/:id" element={<ProductDetails />} />
+
+        {/* ------------------------------------------------------------ */}
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/apply/:id" element={<ApplyJob />} />
+        <Route path='/privacy' element={<Privacy/>} />
+
       </Routes>
 
       <Footer/>

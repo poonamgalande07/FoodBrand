@@ -33,52 +33,28 @@ export default function Navbar({ searchTerm, setSearchTerm, setSelectedCategory,
     <nav className="navbar">
       <h2>EveryBiteTaste</h2>
 
-      <div style={{ position: "relative" }}>
+      <div >
         <input
           type="text"
           placeholder="Search products..."
           
           value={searchTerm}
           onChange={handleChange}
-          className="nav-search"
-        />
+          className="nav-search" />
       
 
-        {/* 🔹 Suggestions dropdown */}
+        {/*  Suggestions dropdown */}
         {suggestions.length > 0 && (
-          <ul style={{
-            position: "absolute",
-            top: "40px",
-            left: 0,
-            right: 0,
-            background: "white",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            zIndex: 999,
-            listStyle: "none",
-            padding: "5px 0",
-            margin: 0,
-            maxHeight: "250px",
-            overflowY: "auto"
-          }}>
+          <ul>
             {suggestions.map((product) => (
               <li
                 key={product.id}
                 onClick={() => handleClick(product)}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  padding: "5px 10px",
-                  cursor: "pointer",
-                }}
                 onMouseEnter={(e) => e.currentTarget.style.background = "#f0f0f0"}
-                onMouseLeave={(e) => e.currentTarget.style.background = "white"}
-              >
+                onMouseLeave={(e) => e.currentTarget.style.background = "white"}>
                 <img
                   src={product.image} // product image
-                  alt={product.name}
-                  style={{ width: "40px", height: "40px", objectFit: "cover", marginRight: "10px", borderRadius: "4px" }}
-                />
+                  alt={product.name} />
                 <span>{product.name}</span>
               </li>
             ))}
@@ -92,6 +68,7 @@ export default function Navbar({ searchTerm, setSearchTerm, setSelectedCategory,
         <a href="/products">Products</a>
         <a href="/contact">Contact</a>
         <a href="/career">Careers</a>
+        <a href="/login">Login</a>
       </div>
     </nav>
   );

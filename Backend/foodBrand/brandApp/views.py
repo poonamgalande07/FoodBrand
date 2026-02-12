@@ -3,7 +3,33 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 from .models import Category,Product ,Taste,Season,Contact
 from .serializers import CategorySerializer,ProductSerializer,SeasonSerializer,TasteSerializer,ContactSerializer
 
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
+from rest_framework import status
+
 # Create your views here.
+
+from .serializers import RegisterSerializer
+
+@api_view(['POST'])
+def register_view(request):
+    serializer = RegisterSerializer(data=request.data)
+    if serializer.is_valid():
+        user = serializer.save()
+
+        # create JWT token
+        refresh = RefreshToken.for_user(user)
+        return Response({
+            "refresh": str(refresh),
+            "access": str(refresh.access_token)
+        })
+    return Response(serializer.errors, status=400)
+
+
+
+
 
 class CategoryListAPI(ListAPIView):
     queryset = Category.objects.all()
@@ -38,6 +64,89 @@ class ProductDetailAPI(RetrieveAPIView):
 class ContactCreateAPI(CreateAPIView):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
+    # permission_classes = [IsAuthenticated]
+
+
+# from rest_framework.generics import CreateAPIView
+# from rest_framework.permissions import IsAuthenticated
+# from django.core.mail import send_mail
+# from .models import Contact
+# from .serializers import ContactSerializer
+
+# class ContactCreateAPI(CreateAPIView):
+#     queryset = Contact.objects.all()
+#     serializer_class = ContactSerializer
+#     permission_classes = [IsAuthenticated]
+
+#     def perform_create(self, serializer):
+
+#         # Login user data auto set ...
+#         contact = serializer.save(
+#             name=self.request.user.username,
+#             email=self.request.user.email
+#         )
+
+#         # send email to admin
+#         send_mail(
+#             subject=f"New {contact.query_type} Query",
+#             message=contact.message,
+#             from_email=self.request.user.email,
+#             recipient_list=['galandep02@gmail.com'],  # admin email
+#             fail_silently=False,
+#         )
+
+
+# ================================================================
+
+from rest_framework import generics, permissions
+from django.contrib.auth.models import User
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.permissions import IsAuthenticated
+from .models import Job, JobApplication
+from .serializers import (
+    RegisterSerializer,
+    JobSerializer,
+    JobApplicationSerializer
+)
+
+class RegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = RegisterSerializer
+
+
+class JobListView(generics.ListAPIView):
+    queryset = Job.objects.all()
+    serializer_class = JobSerializer
+
+
+class ApplyJobView(generics.CreateAPIView):
+    serializer_class = JobApplicationSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
+    permission_classes = []
+
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
